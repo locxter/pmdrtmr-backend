@@ -1,7 +1,5 @@
-// Setting the package
 package com.github.locxter.pmdrtmr.backend;
 
-// Including needed classes/interfaces
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,7 +1,5 @@
-// Setting the package
 package com.github.locxter.pmdrtmr.backend;
 
-// Including needed classes/interfaces
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -53,7 +51,7 @@ public class Timer
         this.description = description;
         this.duration = duration;
     }
-    
+
     public Timer(User user, Timer linkedTimer, boolean isBreak, String description, int duration)
     {
         this.user = user;
@@ -68,12 +66,12 @@ public class Timer
     {
         return id;
     }
-    
+
     public User getUser()
     {
         return user;
     }
-    
+
     public Timer getLinkedTimer()
     {
         return linkedTimer;
@@ -93,12 +91,12 @@ public class Timer
     {
         return duration;
     }
-    
+
     public void setUser(User user)
     {
         this.user = user;
     }
-    
+
     public void setLinkedTimer(Timer linkedTimer)
     {
         this.linkedTimer = linkedTimer;

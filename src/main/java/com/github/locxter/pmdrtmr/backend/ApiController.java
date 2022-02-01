@@ -1,7 +1,5 @@
-// Setting the package
 package com.github.locxter.pmdrtmr.backend;
 
-// Including needed classes/interfaces
 import biweekly.Biweekly;
 import biweekly.ICalendar;
 import biweekly.component.VEvent;
@@ -47,7 +45,7 @@ public class ApiController
     private final BCryptPasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
     private final String SHORT_BREAK_DESCRIPTION = "Take some time to relax and enjoy life";
     private final String LONG_BREAK_DESCRIPTION = "Take some longer time to relax and enjoy life";
-    
+
     // Function to check whether a user has valid credentials
     private boolean userHasCredentials(User user)
     {

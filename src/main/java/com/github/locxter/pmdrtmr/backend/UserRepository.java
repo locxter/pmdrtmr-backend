@@ -1,7 +1,5 @@
-// Setting the package
 package com.github.locxter.pmdrtmr.backend;
 
-// Including needed classes/interfaces
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

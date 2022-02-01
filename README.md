@@ -10,8 +10,8 @@ I generally try to minimize dependencies, but I'm a one man crew and can therefo
 
 - JDK for developing Java programs. Install it with `sudo apt install openjdk-17-jdk`.
 - Maven for building the whole thing. Install it with `sudo apt install maven`.
-- NetBeans as a Java IDE. Install it with `sudo snap install netbeans --classic`.
 - MariaDB as a database for storage. Install it with `sudo apt install mariadb-server`.
+- VSCodium as universal text editor and IDE. Install it with `sudo snap install codium --classic`.
 
 ## How to use it
 

@@ -1,7 +1,5 @@
-// Setting the package
 package com.github.locxter.pmdrtmr.backend;
 
-// Including needed classes/interfaces
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

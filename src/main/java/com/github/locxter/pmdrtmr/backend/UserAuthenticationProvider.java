@@ -1,7 +1,5 @@
-// Setting the package
 package com.github.locxter.pmdrtmr.backend;
 
-// Including needed classes/interfaces
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -29,8 +27,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider
         User user = userRepository.findByUsername(username).orElse(null);
         if (user != null && PASSWORD_ENCODER.matches(password, user.getPassword()))
         {
-            return new UsernamePasswordAuthenticationToken(
-                username, password, new ArrayList<>());
+            return new UsernamePasswordAuthenticationToken(username, password, new ArrayList<>());
         }
         else
         {

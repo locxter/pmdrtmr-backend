@@ -1,7 +1,5 @@
-// Setting the package
 package com.github.locxter.pmdrtmr.backend;
 
-// Including needed classes/interfaces
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
