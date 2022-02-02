@@ -13,38 +13,33 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 // WebSecurityConfiguration class
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter
-{
+public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     // Attributes
     @Autowired
     private UserAuthenticationProvider userAuthenticationProvider;
 
     // Function to remove /signup from the secured URLs
     @Override
-    public void configure(WebSecurity webSecurity) throws Exception
-    {
+    public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring().mvcMatchers("/signup");
     }
 
     // Function to protect all available URLs via authentication
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception
-    {
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests().mvcMatchers("/**").authenticated();
     }
 
     // Required function
     @Override
     @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception
-    {
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
     // Function to use the custom authentication provider
     @Override
-    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception
-    {
+    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder.authenticationProvider(userAuthenticationProvider);
     }
 }

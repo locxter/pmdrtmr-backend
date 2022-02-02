@@ -7,11 +7,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 // Main class
 @SpringBootApplication
 @EnableResourceServer
-public class Main
-{
+public class Main {
     // Main function
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
     }
 }

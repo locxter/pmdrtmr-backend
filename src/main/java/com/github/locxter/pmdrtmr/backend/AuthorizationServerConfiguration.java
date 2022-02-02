@@ -11,23 +11,22 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 // AuthorizationServerConfiguration class
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter
-{
+public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
     // Attributes
     @Autowired
     private AuthenticationManager authenticationManager;
 
     // Required function
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer authorizationServerEndpointsConfigurer) throws Exception
-    {
+    public void configure(AuthorizationServerEndpointsConfigurer authorizationServerEndpointsConfigurer)
+            throws Exception {
         authorizationServerEndpointsConfigurer.authenticationManager(authenticationManager);
     }
 
     // Function to add an in-memory client for authentication
     @Override
-    public void configure(ClientDetailsServiceConfigurer clientDetailsServiceConfigurer) throws Exception
-    {
-        clientDetailsServiceConfigurer.inMemory().withClient("pmdrtmr").secret("{noop}pmdrtmr").authorizedGrantTypes("password").scopes("all");
+    public void configure(ClientDetailsServiceConfigurer clientDetailsServiceConfigurer) throws Exception {
+        clientDetailsServiceConfigurer.inMemory().withClient("pmdrtmr").secret("{noop}pmdrtmr")
+                .authorizedGrantTypes("password").scopes("all");
     }
 }

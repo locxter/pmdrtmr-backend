@@ -9,8 +9,7 @@ import javax.persistence.Table;
 // User class
 @Entity
 @Table(name = "users")
-public class User
-{
+public class User {
     // Attributes
     @Id
     @GeneratedValue
@@ -32,12 +31,11 @@ public class User
     private String caldavAddress;
 
     // Constructors
-    private User()
-    {
+    private User() {
     }
 
-    public User(String username, String password, int workDuration, int shortBreakDuration, int longBreakDuration, int longBreakRatio, String caldavAddress)
-    {
+    public User(String username, String password, int workDuration, int shortBreakDuration, int longBreakDuration,
+            int longBreakRatio, String caldavAddress) {
         this.username = username;
         this.password = password;
         this.workDuration = workDuration;
@@ -48,78 +46,63 @@ public class User
     }
 
     // Getter and Setter
-    public Long getId()
-    {
+    public Long getId() {
         return id;
     }
 
-    public String getUsername()
-    {
+    public String getUsername() {
         return username;
     }
 
-    public String getPassword()
-    {
+    public String getPassword() {
         return password;
     }
 
-    public int getWorkDuration()
-    {
+    public int getWorkDuration() {
         return workDuration;
     }
 
-    public int getShortBreakDuration()
-    {
+    public int getShortBreakDuration() {
         return shortBreakDuration;
     }
 
-    public int getLongBreakDuration()
-    {
+    public int getLongBreakDuration() {
         return longBreakDuration;
     }
 
-    public int getLongBreakRatio()
-    {
+    public int getLongBreakRatio() {
         return longBreakRatio;
     }
 
-    public String getCaldavAddress()
-    {
+    public String getCaldavAddress() {
         return caldavAddress;
     }
 
-    public void setUsername(String username)
-    {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public void setPassword(String password)
-    {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public void setWorkDuration(int workDuration)
-    {
+    public void setWorkDuration(int workDuration) {
         this.workDuration = workDuration;
     }
 
-    public void setShortBreakDuration(int shortBreakDuration)
-    {
+    public void setShortBreakDuration(int shortBreakDuration) {
         this.shortBreakDuration = shortBreakDuration;
     }
 
-    public void setLongBreakDuration(int longBreakDuration)
-    {
+    public void setLongBreakDuration(int longBreakDuration) {
         this.longBreakDuration = longBreakDuration;
     }
 
-    public void setLongBreakRatio(int longBreakRatio)
-    {
+    public void setLongBreakRatio(int longBreakRatio) {
         this.longBreakRatio = longBreakRatio;
     }
 
-    public void setCaldavAddress(String caldavAddress)
-    {
+    public void setCaldavAddress(String caldavAddress) {
         this.caldavAddress = caldavAddress;
     }
 }

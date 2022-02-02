@@ -17,35 +17,29 @@ import org.springframework.stereotype.Component;
 // CorsFilter class
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class CorsFilter implements Filter
-{
+public class CorsFilter implements Filter {
     // Function to to respond with the correct headers on CORS requests
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException
-    {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+            throws IOException, ServletException {
         final HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
         httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
         httpServletResponse.setHeader("Access-Control-Allow-Methods", "*");
         httpServletResponse.setHeader("Access-Control-Allow-Headers", "*");
-        if (HttpMethod.OPTIONS.name().equalsIgnoreCase(((HttpServletRequest) servletRequest).getMethod()))
-        {
+        if (HttpMethod.OPTIONS.name().equalsIgnoreCase(((HttpServletRequest) servletRequest).getMethod())) {
             httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-        }
-        else
-        {
+        } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }
     }
 
     // Required function
     @Override
-    public void destroy()
-    {
+    public void destroy() {
     }
 
     // Required function
     @Override
-    public void init(FilterConfig config) throws ServletException
-    {
+    public void init(FilterConfig config) throws ServletException {
     }
 }

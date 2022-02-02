@@ -15,8 +15,7 @@ import org.hibernate.annotations.OnDeleteAction;
 // Timer class
 @Entity
 @Table(name = "timers")
-public class Timer
-{
+public class Timer {
     // Attributes
     @Id
     @GeneratedValue
@@ -40,20 +39,17 @@ public class Timer
     private int duration;
 
     // Constructors
-    private Timer()
-    {
+    private Timer() {
     }
 
-    public Timer(User user, boolean isBreak, String description, int duration)
-    {
+    public Timer(User user, boolean isBreak, String description, int duration) {
         this.user = user;
         this.isBreak = isBreak;
         this.description = description;
         this.duration = duration;
     }
 
-    public Timer(User user, Timer linkedTimer, boolean isBreak, String description, int duration)
-    {
+    public Timer(User user, Timer linkedTimer, boolean isBreak, String description, int duration) {
         this.user = user;
         this.linkedTimer = linkedTimer;
         this.isBreak = isBreak;
@@ -62,58 +58,47 @@ public class Timer
     }
 
     // Getter and Setter
-    public Long getId()
-    {
+    public Long getId() {
         return id;
     }
 
-    public User getUser()
-    {
+    public User getUser() {
         return user;
     }
 
-    public Timer getLinkedTimer()
-    {
+    public Timer getLinkedTimer() {
         return linkedTimer;
     }
 
-    public boolean getIsBreak()
-    {
+    public boolean getIsBreak() {
         return isBreak;
     }
 
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
 
-    public int getDuration()
-    {
+    public int getDuration() {
         return duration;
     }
 
-    public void setUser(User user)
-    {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public void setLinkedTimer(Timer linkedTimer)
-    {
+    public void setLinkedTimer(Timer linkedTimer) {
         this.linkedTimer = linkedTimer;
     }
 
-    public void setIsBreak(boolean isBreak)
-    {
+    public void setIsBreak(boolean isBreak) {
         this.isBreak = isBreak;
     }
 
-    public void setDescription(String description)
-    {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setDuration(int duration)
-    {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 }
