@@ -34,8 +34,7 @@ public class User {
     private User() {
     }
 
-    public User(String username, String password, int workDuration, int shortBreakDuration, int longBreakDuration,
-            int longBreakRatio, String caldavAddress) {
+    public User(String username, String password, int workDuration, int shortBreakDuration, int longBreakDuration, int longBreakRatio, String caldavAddress) {
         this.username = username;
         this.password = password;
         this.workDuration = workDuration;
