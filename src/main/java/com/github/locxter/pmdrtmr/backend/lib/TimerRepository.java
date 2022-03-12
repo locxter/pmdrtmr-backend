@@ -1,4 +1,4 @@
-package com.github.locxter.pmdrtmr.backend;
+package com.github.locxter.pmdrtmr.backend.lib;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.github.locxter.pmdrtmr.backend;
+package com.github.locxter.pmdrtmr.backend.lib;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
-    // Function to to respond with the correct headers on CORS requests
+    // Function to respond with the correct headers on CORS requests
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         final HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;

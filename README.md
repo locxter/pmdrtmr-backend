@@ -11,8 +11,6 @@ I generally try to minimize dependencies, but I'm a one man crew and can therefo
 - JDK for developing Java programs. Install it with `sudo apt install openjdk-17-jdk`.
 - Maven for building the whole thing. Install it with `sudo apt install maven`.
 - MariaDB as a database for storage. Install it with `sudo apt install mariadb-server`.
-- VSCodium as universal text editor and IDE. To install it visit their [website](https://vscodium.com/#install).
-- VSCodium extensions Debugger for Java, Language support for Java, Maven for Java, Project Manager for Java and Test Runner for Java to enhance it's capabilities. Install them with `codium --install-extension vscjava.vscode-java-debug --install-extension redhat.java --install-extension vscjava.vscode-maven --install-extension vscjava.vscode-java-dependency --install-extension vscjava.vscode-java-test`.
 
 ## How to use it
 

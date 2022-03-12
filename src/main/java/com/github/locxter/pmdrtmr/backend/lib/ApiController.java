@@ -1,4 +1,4 @@
-package com.github.locxter.pmdrtmr.backend;
+package com.github.locxter.pmdrtmr.backend.lib;
 
 import biweekly.Biweekly;
 import biweekly.ICalendar;
