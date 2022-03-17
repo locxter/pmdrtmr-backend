@@ -14,4 +14,4 @@ I generally try to minimize dependencies, but I'm a one man crew and can therefo
 
 ## How to use it
 
-First secure the mariaDB installation via `sudo mysql_secure_installation` (choose `Enter`, then `N` twice and finally `Y` for all following questions), login to mariaDB via `sudo mysql -u root`, create the needed database via `create database pmdrtmr;` as well as user via `grant all privileges on pmdrtmr.* to 'pmdrtmr' identified by 'pmdrtmr';`. Then run the program directly via `mvn spring-boot:run` or build the JAR via `mvn clean package` and then run it via `java -jar target/pmdrtmr-backend-1.0.jar`.
+First secure the mariaDB installation via `sudo mysql_secure_installation` (choose `Enter`, then `N` twice and finally `Y` for all following questions), login to mariaDB via `sudo mysql -u root`, create the needed database via `create database pmdrtmr;` as well as user via `grant all privileges on pmdrtmr.* to 'pmdrtmr' identified by 'pmdrtmr';`. Then build the JAR via `mvn clean package` and then run it via `java -jar target/pmdrtmr-backend-1.0.jar`.

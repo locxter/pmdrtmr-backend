@@ -161,7 +161,7 @@ public class ApiController {
     @GetMapping("/caldav")
     public ResponseEntity getCaldavDescriptions(Authentication authentication) {
         User user = userRepository.findByUsername(authentication.getName()).orElse(null);
-        List<String> descriptions = new ArrayList<String>();
+        ArrayList<String> descriptions = new ArrayList<>();
         if (user != null) {
             try {
                 Sardine sardine = SardineFactory.begin();
