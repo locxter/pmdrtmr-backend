@@ -57,7 +57,7 @@ public class Timer {
         this.duration = duration;
     }
 
-    // Getter and Setter
+    // Getter and setter
     public Long getId() {
         return id;
     }

@@ -44,7 +44,7 @@ public class User {
         this.caldavAddress = caldavAddress;
     }
 
-    // Getter and Setter
+    // Getter and setter
     public Long getId() {
         return id;
     }
