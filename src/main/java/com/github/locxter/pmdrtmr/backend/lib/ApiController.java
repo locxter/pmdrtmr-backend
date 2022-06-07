@@ -41,7 +41,7 @@ public class ApiController {
     private AuthorizationServerTokenServices authorizationServerTokenServices;
     @Autowired
     private ConsumerTokenServices consumerTokenServices;
-    private final BCryptPasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     private final String SHORT_BREAK_DESCRIPTION = "Take some time to relax and enjoy life";
     private final String LONG_BREAK_DESCRIPTION = "Take some longer time to relax and enjoy life";
 
@@ -95,7 +95,7 @@ public class ApiController {
     @PostMapping("/signup")
     public ResponseEntity signUp(@RequestBody User user) {
         if (userHasCredentials(user) && !userRepository.existsByUsername(user.getUsername())) {
-            user.setPassword(PASSWORD_ENCODER.encode(user.getPassword()));
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setWorkDuration(25);
             user.setShortBreakDuration(5);
             user.setLongBreakDuration(25);
@@ -125,7 +125,7 @@ public class ApiController {
             User user = userRepository.findByUsername(authentication.getName()).orElse(null);
             if (user != null && (user.getUsername().equals(updatedUser.getUsername()) || !userRepository.existsByUsername(updatedUser.getUsername()))) {
                 user.setUsername(updatedUser.getUsername());
-                user.setPassword(PASSWORD_ENCODER.encode(updatedUser.getPassword()));
+                user.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
                 user.setWorkDuration(updatedUser.getWorkDuration());
                 user.setShortBreakDuration(updatedUser.getShortBreakDuration());
                 user.setLongBreakDuration(updatedUser.getLongBreakDuration());

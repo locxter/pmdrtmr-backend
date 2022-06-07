@@ -15,7 +15,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
     // Attributes
     @Autowired
     private UserRepository userRepository;
-    private final BCryptPasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     // Function for authenticating a user against the database
     @Override
@@ -23,7 +23,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
         User user = userRepository.findByUsername(username).orElse(null);
-        if (user != null && PASSWORD_ENCODER.matches(password, user.getPassword())) {
+        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
             return new UsernamePasswordAuthenticationToken(username, password, new ArrayList<>());
         } else {
             return null;
