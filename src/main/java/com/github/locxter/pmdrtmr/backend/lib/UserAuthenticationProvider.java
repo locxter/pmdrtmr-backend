@@ -9,7 +9,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-// UserAuthenticationProvider class
+// User authentication provider class
 @Component
 public class UserAuthenticationProvider implements AuthenticationProvider {
     // Attributes

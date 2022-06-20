@@ -4,7 +4,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-// UserRepository class
+// User repository class
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     // Method to find a user by it's username
