@@ -16,13 +16,13 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    // Required function
+    // Required method
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer authorizationServerEndpointsConfigurer) throws Exception {
         authorizationServerEndpointsConfigurer.authenticationManager(authenticationManager);
     }
 
-    // Function to add an in-memory client for authentication
+    // Method to add an in-memory client for authentication
     @Override
     public void configure(ClientDetailsServiceConfigurer clientDetailsServiceConfigurer) throws Exception {
         clientDetailsServiceConfigurer.inMemory().withClient("pmdrtmr").secret("{noop}pmdrtmr").authorizedGrantTypes("password").scopes("all");

@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 // TimerRepository class
 @Repository
 public interface TimerRepository extends JpaRepository<Timer, Long> {
-    // Function to find all timers of a user
+    // Method to find all timers of a user
     List<Timer> findByUserId(Long userId);
 
-    // Function to find a timer of a user
+    // Method to find a timer of a user
     Optional<Timer> findByUserIdAndId(Long userId, Long id);
 }

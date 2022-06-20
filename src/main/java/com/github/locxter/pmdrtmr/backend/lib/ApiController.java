@@ -45,22 +45,22 @@ public class ApiController {
     private final String SHORT_BREAK_DESCRIPTION = "Take some time to relax and enjoy life";
     private final String LONG_BREAK_DESCRIPTION = "Take some longer time to relax and enjoy life";
 
-    // Function to check whether a user has valid credentials
+    // Method to check whether a user has valid credentials
     private boolean userHasCredentials(User user) {
         return user.getUsername() != null && !user.getUsername().isEmpty() && user.getPassword() != null && !user.getPassword().isEmpty();
     }
 
-    // Function to check whether a user has valid settings
+    // Method to check whether a user has valid settings
     private boolean userHasSettings(User user) {
         return user.getWorkDuration() > 0 && user.getShortBreakDuration() > 0 && user.getLongBreakDuration() > 0 && user.getLongBreakRatio() > 0 && user.getCaldavAddress() != null;
     }
 
-    // Function to check whether a timer has a valid description
+    // Method to check whether a timer has a valid description
     private boolean timerHasDescription(Timer timer) {
         return timer.getDescription() != null && !timer.getDescription().isEmpty();
     }
 
-    // Function to update timer durations (work, short break and long break) after settings were changed or a timer was deleted
+    // Method to update timer durations (work, short break and long break) after settings were changed or a timer was deleted
     private void updateTimerDurations(User user) {
         if (user != null) {
             List<Timer> timers = timerRepository.findByUserId(user.getId());
@@ -82,7 +82,7 @@ public class ApiController {
         }
     }
 
-    // Function for revoking an access token
+    // Method for revoking an access token
     @DeleteMapping("/oauth/revoke-token")
     public ResponseEntity revokeAccessToken(Authentication authentication) {
         OAuth2Authentication oAuth2Authentication = (OAuth2Authentication) authentication;
@@ -91,7 +91,7 @@ public class ApiController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    // Function for signing up a new user
+    // Method for signing up a new user
     @PostMapping("/signup")
     public ResponseEntity signUp(@RequestBody User user) {
         if (userHasCredentials(user) && !userRepository.existsByUsername(user.getUsername())) {
@@ -107,7 +107,7 @@ public class ApiController {
         }
     }
 
-    // Function for retrieving an user
+    // Method for retrieving an user
     @GetMapping("/user")
     public ResponseEntity getUser(Authentication authentication) {
         User user = userRepository.findByUsername(authentication.getName()).orElse(null);
@@ -118,7 +118,7 @@ public class ApiController {
         }
     }
 
-    // Function for updating an user
+    // Method for updating an user
     @PutMapping("/user")
     public ResponseEntity updateUser(Authentication authentication, @RequestBody User updatedUser) {
         if (userHasCredentials(updatedUser) && userHasSettings(updatedUser)) {
@@ -142,7 +142,7 @@ public class ApiController {
         }
     }
 
-    // Function for deleting an user
+    // Method for deleting an user
     @DeleteMapping("/user")
     public ResponseEntity deleteUser(Authentication authentication) {
         User user = userRepository.findByUsername(authentication.getName()).orElse(null);
@@ -157,7 +157,7 @@ public class ApiController {
         }
     }
 
-    // Function for retrieving todo and event descriptions of a remote CalDAV calendar
+    // Method for retrieving todo and event descriptions of a remote CalDAV calendar
     @GetMapping("/caldav")
     public ResponseEntity getCaldavDescriptions(Authentication authentication) {
         User user = userRepository.findByUsername(authentication.getName()).orElse(null);
@@ -210,7 +210,7 @@ public class ApiController {
         }
     }
 
-    // Function for retrieving all timers of an user
+    // Method for retrieving all timers of an user
     @GetMapping("/timers")
     public ResponseEntity getAllTimersOfUser(Authentication authentication) {
         User user = userRepository.findByUsername(authentication.getName()).orElse(null);
@@ -221,7 +221,7 @@ public class ApiController {
         }
     }
 
-    // Function for creating a new timer of an user
+    // Method for creating a new timer of an user
     @PostMapping("/timers")
     public ResponseEntity createTimer(Authentication authentication, @RequestBody Timer timer) {
         if (timerHasDescription(timer)) {
@@ -247,7 +247,7 @@ public class ApiController {
 
     }
 
-    // Function for retrieving a timer of an user
+    // Method for retrieving a timer of an user
     @GetMapping("timers/{id}")
     public ResponseEntity getTimer(Authentication authentication, @PathVariable Long id) {
         User user = userRepository.findByUsername(authentication.getName()).orElse(null);
@@ -259,7 +259,7 @@ public class ApiController {
         }
     }
 
-    // Function for deleting a timer of an user
+    // Method for deleting a timer of an user
     @DeleteMapping("timers/{id}")
     public ResponseEntity deleteTimer(Authentication authentication, @PathVariable Long id) {
         User user = userRepository.findByUsername(authentication.getName()).orElse(null);

@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
-    // Function to respond with the correct headers on CORS requests
+    // Method to respond with the correct headers on CORS requests
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
@@ -32,12 +32,12 @@ public class CorsFilter implements Filter {
         }
     }
 
-    // Required function
+    // Required method
     @Override
     public void destroy() {
     }
 
-    // Required function
+    // Required method
     @Override
     public void init(FilterConfig config) throws ServletException {
     }

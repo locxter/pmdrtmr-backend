@@ -18,26 +18,26 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserAuthenticationProvider userAuthenticationProvider;
 
-    // Function to remove /signup from the secured URLs
+    // Method to remove /signup from the secured URLs
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring().mvcMatchers("/signup");
     }
 
-    // Function to protect all available URLs via authentication
+    // Method to protect all available URLs via authentication
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests().mvcMatchers("/**").authenticated();
     }
 
-    // Required function
+    // Required method
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
-    // Function to use the custom authentication provider
+    // Method to use the custom authentication provider
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder.authenticationProvider(userAuthenticationProvider);

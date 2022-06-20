@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 // Main test class
 @SpringBootTest
 class MainTest {
-	// Required function
+	// Required method
 	@Test
 	void contextLoads() {
 	}

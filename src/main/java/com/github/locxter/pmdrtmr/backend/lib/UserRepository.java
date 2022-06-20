@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 // UserRepository class
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    // Function to find a user by it's username
+    // Method to find a user by it's username
     Optional<User> findByUsername(String username);
 
-    // Function to check if a user with a given username exists
+    // Method to check if a user with a given username exists
     Boolean existsByUsername(String username);
 }

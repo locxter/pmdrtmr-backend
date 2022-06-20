@@ -17,7 +17,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
     private UserRepository userRepository;
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    // Function for authenticating a user against the database
+    // Method for authenticating a user against the database
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
@@ -30,7 +30,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
         }
     }
 
-    // Required function
+    // Required method
     @Override
     public boolean supports(Class<?> authenticationToken) {
         return authenticationToken.equals(UsernamePasswordAuthenticationToken.class);
