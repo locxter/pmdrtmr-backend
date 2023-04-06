@@ -2,6 +2,8 @@
 
 ## Overview
 
+> Please keep in mind that this way my first try at building a client-server app and is **not my primary focus** anymore.
+
 This repository includes the backend of my Pomodoro timer project pmdrtmr, which I build during my work placement at the [KDO](https://www.kdo.de/).
 
 ## Dependencies
