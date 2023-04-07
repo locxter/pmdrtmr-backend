@@ -1,6 +1,7 @@
 package com.github.locxter.pmdrtmr.backend.lib;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -66,36 +68,36 @@ public class Timer {
         return user;
     }
 
-    public Timer getLinkedTimer() {
-        return linkedTimer;
-    }
-
-    public boolean getIsBreak() {
-        return isBreak;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Timer getLinkedTimer() {
+        return linkedTimer;
     }
 
     public void setLinkedTimer(Timer linkedTimer) {
         this.linkedTimer = linkedTimer;
     }
 
+    public boolean getIsBreak() {
+        return isBreak;
+    }
+
     public void setIsBreak(boolean isBreak) {
         this.isBreak = isBreak;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getDuration() {
+        return duration;
     }
 
     public void setDuration(int duration) {

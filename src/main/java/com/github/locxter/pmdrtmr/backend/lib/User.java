@@ -34,7 +34,8 @@ public class User {
     private User() {
     }
 
-    public User(String username, String password, int workDuration, int shortBreakDuration, int longBreakDuration, int longBreakRatio, String caldavAddress) {
+    public User(String username, String password, int workDuration, int shortBreakDuration, int longBreakDuration,
+                int longBreakRatio, String caldavAddress) {
         this.username = username;
         this.password = password;
         this.workDuration = workDuration;
@@ -53,52 +54,52 @@ public class User {
         return username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public int getWorkDuration() {
-        return workDuration;
-    }
-
-    public int getShortBreakDuration() {
-        return shortBreakDuration;
-    }
-
-    public int getLongBreakDuration() {
-        return longBreakDuration;
-    }
-
-    public int getLongBreakRatio() {
-        return longBreakRatio;
-    }
-
-    public String getCaldavAddress() {
-        return caldavAddress;
-    }
-
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
+    public int getWorkDuration() {
+        return workDuration;
+    }
+
     public void setWorkDuration(int workDuration) {
         this.workDuration = workDuration;
+    }
+
+    public int getShortBreakDuration() {
+        return shortBreakDuration;
     }
 
     public void setShortBreakDuration(int shortBreakDuration) {
         this.shortBreakDuration = shortBreakDuration;
     }
 
+    public int getLongBreakDuration() {
+        return longBreakDuration;
+    }
+
     public void setLongBreakDuration(int longBreakDuration) {
         this.longBreakDuration = longBreakDuration;
     }
 
+    public int getLongBreakRatio() {
+        return longBreakRatio;
+    }
+
     public void setLongBreakRatio(int longBreakRatio) {
         this.longBreakRatio = longBreakRatio;
+    }
+
+    public String getCaldavAddress() {
+        return caldavAddress;
     }
 
     public void setCaldavAddress(String caldavAddress) {

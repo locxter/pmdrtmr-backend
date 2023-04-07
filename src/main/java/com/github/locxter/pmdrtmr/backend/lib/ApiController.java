@@ -8,10 +8,12 @@ import biweekly.util.DateTimeComponents;
 import biweekly.util.ICalDate;
 import com.github.sardine.Sardine;
 import com.github.sardine.SardineFactory;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +34,8 @@ import org.springframework.web.bind.annotation.RestController;
 // API controller class
 @RestController
 public class ApiController {
+    private final String SHORT_BREAK_DESCRIPTION = "Take some time to relax and enjoy life";
+    private final String LONG_BREAK_DESCRIPTION = "Take some longer time to relax and enjoy life";
     // Attributes
     @Autowired
     private TimerRepository timerRepository;
@@ -42,17 +46,17 @@ public class ApiController {
     @Autowired
     private ConsumerTokenServices consumerTokenServices;
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    private final String SHORT_BREAK_DESCRIPTION = "Take some time to relax and enjoy life";
-    private final String LONG_BREAK_DESCRIPTION = "Take some longer time to relax and enjoy life";
 
     // Method to check whether a user has valid credentials
     private boolean userHasCredentials(User user) {
-        return user.getUsername() != null && !user.getUsername().isEmpty() && user.getPassword() != null && !user.getPassword().isEmpty();
+        return user.getUsername() != null && !user.getUsername().isEmpty() && user.getPassword() != null &&
+                !user.getPassword().isEmpty();
     }
 
     // Method to check whether a user has valid settings
     private boolean userHasSettings(User user) {
-        return user.getWorkDuration() > 0 && user.getShortBreakDuration() > 0 && user.getLongBreakDuration() > 0 && user.getLongBreakRatio() > 0 && user.getCaldavAddress() != null;
+        return user.getWorkDuration() > 0 && user.getShortBreakDuration() > 0 && user.getLongBreakDuration() > 0 &&
+                user.getLongBreakRatio() > 0 && user.getCaldavAddress() != null;
     }
 
     // Method to check whether a timer has a valid description
@@ -60,7 +64,8 @@ public class ApiController {
         return timer.getDescription() != null && !timer.getDescription().isEmpty();
     }
 
-    // Method to update timer durations (work, short break and long break) after settings were changed or a timer was deleted
+    // Method to update timer durations (work, short break and long break) after settings were changed or a timer was
+    // deleted
     private void updateTimerDurations(User user) {
         if (user != null) {
             List<Timer> timers = timerRepository.findByUserId(user.getId());
@@ -123,7 +128,8 @@ public class ApiController {
     public ResponseEntity updateUser(Authentication authentication, @RequestBody User updatedUser) {
         if (userHasCredentials(updatedUser) && userHasSettings(updatedUser)) {
             User user = userRepository.findByUsername(authentication.getName()).orElse(null);
-            if (user != null && (user.getUsername().equals(updatedUser.getUsername()) || !userRepository.existsByUsername(updatedUser.getUsername()))) {
+            if (user != null && (user.getUsername().equals(updatedUser.getUsername()) ||
+                    !userRepository.existsByUsername(updatedUser.getUsername()))) {
                 user.setUsername(updatedUser.getUsername());
                 user.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
                 user.setWorkDuration(updatedUser.getWorkDuration());
@@ -183,7 +189,11 @@ public class ApiController {
                         int todoDueYear = todoDueDate.getRawComponents().getYear();
                         int todoDueMonth = todoDueDate.getRawComponents().getMonth();
                         int todoDueDay = todoDueDate.getRawComponents().getDate();
-                        if (((todoStartDay <= todayDay && todoStartMonth == todayMonth && todoStartYear == todayYear) || (todoStartMonth < todayMonth && todoStartYear == todayYear) || todoStartYear < todayYear) && ((todoDueDay >= todayDay && todoStartMonth == todayMonth && todoStartYear == todayYear) || (todoDueMonth > todayMonth && todoDueYear == todayYear) || todoDueYear > todayYear)) {
+                        if (((todoStartDay <= todayDay && todoStartMonth == todayMonth && todoStartYear == todayYear) ||
+                                (todoStartMonth < todayMonth && todoStartYear == todayYear) ||
+                                todoStartYear < todayYear) && ((todoDueDay >= todayDay && todoStartMonth == todayMonth &&
+                                todoStartYear == todayYear) || (todoDueMonth > todayMonth && todoDueYear == todayYear) ||
+                                todoDueYear > todayYear)) {
                             descriptions.add(todo.getSummary().getValue());
                         }
                     }
@@ -196,7 +206,11 @@ public class ApiController {
                         int eventEndYear = eventEndDate.getRawComponents().getYear();
                         int eventEndMonth = eventEndDate.getRawComponents().getMonth();
                         int eventEndDay = eventEndDate.getRawComponents().getDate();
-                        if (((eventStartDay <= todayDay && eventStartMonth == todayMonth && eventStartYear == todayYear) || (eventStartMonth < todayMonth && eventStartYear == todayYear) || eventStartYear < todayYear) && ((eventEndDay >= todayDay && eventStartMonth == todayMonth && eventStartYear == todayYear) || (eventEndMonth > todayMonth && eventEndYear == todayYear) || eventEndYear > todayYear)) {
+                        if (((eventStartDay <= todayDay && eventStartMonth == todayMonth && eventStartYear == todayYear) ||
+                                (eventStartMonth < todayMonth && eventStartYear == todayYear) ||
+                                eventStartYear < todayYear) && ((eventEndDay >= todayDay && eventStartMonth == todayMonth &&
+                                eventStartYear == todayYear) || (eventEndMonth > todayMonth && eventEndYear == todayYear) ||
+                                eventEndYear > todayYear)) {
                             descriptions.add(event.getSummary().getValue());
                         }
                     }
@@ -231,7 +245,8 @@ public class ApiController {
                 timer.setIsBreak(false);
                 timer.setDuration(user.getWorkDuration());
                 Timer returnValue = timerRepository.save(timer);
-                Timer breakTimer = new Timer(user, returnValue, true, SHORT_BREAK_DESCRIPTION, user.getShortBreakDuration());
+                Timer breakTimer = new Timer(user, returnValue, true, SHORT_BREAK_DESCRIPTION,
+                        user.getShortBreakDuration());
                 if ((timerRepository.findByUserId(user.getId()).size() + 1) % (user.getLongBreakRatio() * 2) == 0) {
                     breakTimer.setDescription(LONG_BREAK_DESCRIPTION);
                     breakTimer.setDuration(user.getLongBreakDuration());

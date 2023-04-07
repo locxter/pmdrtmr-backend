@@ -25,6 +25,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     // Method to add an in-memory client for authentication
     @Override
     public void configure(ClientDetailsServiceConfigurer clientDetailsServiceConfigurer) throws Exception {
-        clientDetailsServiceConfigurer.inMemory().withClient("pmdrtmr").secret("{noop}pmdrtmr").authorizedGrantTypes("password").scopes("all");
+        clientDetailsServiceConfigurer.inMemory().withClient("pmdrtmr").secret("{noop}pmdrtmr")
+                .authorizedGrantTypes("password").scopes("all");
     }
 }
